@@ -13,14 +13,14 @@ const server = express()
 
 server.use(express.json())
 server.use(cors())
-server.use(express.static(path.join(__dirname, 'client/public')))
+server.use(express.static(path.join(__dirname, 'client/build')))
 
 server.get('/api', (req, res) => {
   res.json({ message: 'Web 45 is awesome!' })
 })
 
-server.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'client/public', 'index.html'))
+server.get('/my', (req, res) => {
+  res.sendFile(path.join(__dirname, 'client/build', 'index.html'))
 })
 
 server.listen(PORT, () => {
